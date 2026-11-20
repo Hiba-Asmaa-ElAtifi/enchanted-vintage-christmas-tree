@@ -1,19 +1,29 @@
 # The Enchanted Vintage Christmas Tree
 
-A small creative-coding project that brings a vintage Christmas tree to life through thousands of animated points of light.
+A small creative-coding project that reimagines a traditional Christmas tree as an animated composition of glowing pixels and particles.
 
-The experience combines a dark forest-green palette, warm golden garlands, traditional ornaments, falling snow, presents, and a handwritten **Merry Christmas** message. Everything is rendered in real time in the browser, with a deliberately pixelated and generative aesthetic rather than a realistic 3D style.
+The scene gradually comes to life with deep-green branches, vintage ornaments, golden garlands, warm lights, falling snow, colourful presents, and a handwritten Christmas message. The result is intentionally stylised and digital, combining the nostalgic atmosphere of an old-fashioned Christmas with a generative WebGL aesthetic.
 
-## Highlights
+<img width="622" height="847" alt="The Enchanted Vintage Christmas Tree" src="https://github.com/user-attachments/assets/ca691bfb-fbcb-4b85-bfed-fce6765e1a7b" />
 
-- Procedurally generated Christmas-tree silhouette
-- Thousands of animated WebGL particles
-- Vintage ornaments, warm fairy lights, garlands, and presents
-- Interactive camera movement
-- Repeatable **Make a Wish** particle effect
-- Instrumental Christmas soundtrack with play and pause controls
+## The experience
+
+The animation begins with particles gathering to form the tree and its branches. Decorations, lights, garlands, presents, and the glowing star then appear progressively until the complete scene is revealed.
+
+Visitors can gently explore the tree, play the instrumental soundtrack, and activate the **Make a Wish** effect for an additional burst of light and particles.
+
+## Features
+
+- Procedurally generated tree made from animated WebGL particles
+- Dark vintage Christmas colour palette
+- Warm golden garlands and fairy lights
+- Pixel-based ornaments and presents
+- Animated falling snow
+- Progressive tree-construction sequence
+- Gentle interactive camera movement
+- Repeatable **Make a Wish** animation
+- Instrumental soundtrack with play and pause controls
 - Responsive full-screen presentation
-- Reduced-motion support
 
 ## Built with
 
@@ -27,29 +37,39 @@ The experience combines a dark forest-green palette, warm golden garlands, tradi
 
 ## Run locally
 
+Clone the repository and install the dependencies:
+
 ```bash
+git clone https://github.com/Hiba-Asmaa-ElAtifi/enchanted-vintage-christmas-tree.git
+cd enchanted-vintage-christmas-tree
 npm install
 npm run dev
 ```
 
-Then open the local address displayed by Vite, usually `http://localhost:5173`.
+Open the local address displayed by Vite, usually:
 
-## Production build
+```text
+http://localhost:5173
+```
+
+## Create a production build
 
 ```bash
 npm run build
 ```
 
+The generated production files will be available in the `dist` directory.
+
 ## Music
 
-The experience expects its soundtrack at:
+The instrumental soundtrack is stored at:
 
 ```text
 public/audio/carol-of-the-bells.mp3
 ```
 
-The included audio should only be redistributed when its owner has the necessary rights or permission.
+Modern browsers require a user interaction before playing audio, so the soundtrack starts when the visitor activates the music control.
 
-## About
+## Project note
 
-This is a small personal experiment exploring particle animation, procedural composition, and the nostalgic visual language of vintage Christmas decorations.
+This is a small personal experiment created to explore particle animation, procedural composition, interactive WebGL, and the visual atmosphere of vintage Christmas decorations.
