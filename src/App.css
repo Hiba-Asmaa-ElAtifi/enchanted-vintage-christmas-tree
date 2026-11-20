@@ -1,0 +1,17 @@
+.experience-shell { position: relative; width: 100%; height: 100svh; overflow: hidden; isolation: isolate; background: #090504; }
+.experience-shell::before { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(circle at 50% 42%, transparent 35%, rgba(17,5,3,.2) 68%, rgba(4,2,2,.78) 100%), linear-gradient(180deg, rgba(100,15,13,.08), transparent 28%); }
+canvas { display: block; touch-action: none; }
+.christmas-message { position: absolute; z-index: 3; left: 50%; bottom: clamp(2.2rem,6vh,4.5rem); width: max-content; max-width: 72vw; margin: 0; transform: translateX(-50%); color: #fffdf7; font-family: 'Snell Roundhand','Apple Chancery','Segoe Script','Brush Script MT',cursive; font-size: clamp(2.2rem,4.8vw,4.8rem); font-weight: 400; line-height: 1; letter-spacing: .02em; text-align: center; text-shadow: 0 0 10px rgba(255,255,255,.72),0 0 28px rgba(255,230,190,.38),0 3px 18px rgba(0,0,0,.9); pointer-events: none; opacity: 0; animation: christmas-message-reveal 2.4s 16.2s forwards; }
+@keyframes christmas-message-reveal { from { opacity: 0; transform: translate(-50%,.75rem); } to { opacity: 1; transform: translate(-50%,0); } }
+.experience-controls { position: absolute; z-index: 3; right: clamp(1rem,3vw,2.2rem); bottom: clamp(1rem,3vw,2rem); display: flex; align-items: center; gap: .7rem; }
+.experience-controls button { border: 1px solid rgba(214,180,119,.56); color: #f3e8d6; background: rgba(31,10,8,.62); box-shadow: inset 0 0 0 1px rgba(255,241,216,.06),0 8px 32px rgba(0,0,0,.3); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: border-color 180ms ease,background 180ms ease,transform 180ms ease; }
+.experience-controls button:hover:not(:disabled),.experience-controls button:focus-visible { border-color: #ffe6a3; background: rgba(100,15,13,.72); transform: translateY(-2px); }
+.experience-controls button:focus-visible { outline: 2px solid #ffe6a3; outline-offset: 3px; }
+.experience-controls button:disabled { opacity: .48; cursor: not-allowed; }
+.wish-button { min-height: 2.75rem; padding: .65rem 1rem; border-radius: 999px; font: 500 .82rem/1 'Avenir Next','Segoe UI',sans-serif; letter-spacing: .11em; text-transform: uppercase; cursor: pointer; }
+.wish-button span { display: inline-block; margin-right: .48rem; color: #ffe6a3; }
+.icon-button { width: 2.75rem; height: 2.75rem; padding: 0; border-radius: 50%; font-size: 1.05rem; cursor: pointer; }
+.corner-flourish { position: absolute; z-index: 2; width: clamp(5rem,12vw,9rem); height: 1px; top: 2rem; opacity: .48; background: linear-gradient(90deg,transparent,#ad8950); pointer-events: none; }
+.corner-flourish--left { left: 0; }.corner-flourish--right { right: 0; transform: scaleX(-1); }
+@media (max-width: 640px) { .christmas-message { bottom: 5.4rem; font-size: clamp(2rem,11vw,3.3rem); } .experience-controls { right: 50%; transform: translateX(50%); bottom: max(1rem,env(safe-area-inset-bottom)); } .wish-button { font-size: .72rem; } }
+@media (prefers-reduced-motion: reduce) { .christmas-message { animation-duration: .01ms; animation-delay: 0s; } .experience-controls button { transition: none; } }
