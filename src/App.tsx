@@ -9,6 +9,7 @@ const MUSIC_PATH = '/audio/carol-of-the-bells.mp3'
 
 function App() {
   const audioRef = useRef<HTMLAudioElement | null>(null)
+  const [started, setStarted] = useState(false)
   const [muted, setMuted] = useState(true)
   const [audioUnavailable, setAudioUnavailable] = useState(false)
   const [wishId, setWishId] = useState(0)
@@ -24,6 +25,21 @@ function App() {
       audio.src = ''
     }
   }, [])
+
+  const startExperience = useCallback(() => {
+    if (started) return
+
+    const audio = audioRef.current
+    if (audio) {
+      audio.currentTime = 0
+      void audio
+        .play()
+        .then(() => setMuted(false))
+        .catch(() => setAudioUnavailable(true))
+    }
+
+    setStarted(true)
+  }, [started])
 
   const toggleAudio = useCallback(async () => {
     const audio = audioRef.current
@@ -43,28 +59,38 @@ function App() {
 
   return (
     <main className="experience-shell">
-      <Canvas
-        dpr={[1, 1.75]}
-        camera={{ position: [0, 0.95, 13], fov: 40, near: 0.1, far: 80 }}
-        gl={{ antialias: true, alpha: false, powerPreference: 'high-performance' }}
-      >
-        <fog attach="fog" args={['#160f14', 15, 34]} />
-        <Suspense fallback={null}>
-          <CodedChristmasScene wishId={wishId} />
-          <EffectComposer multisampling={0}>
-            <Bloom intensity={0.75} luminanceThreshold={0.68} mipmapBlur />
-            <Vignette eskil={false} offset={0.18} darkness={0.62} />
-          </EffectComposer>
-          <Preload all />
-        </Suspense>
-        <AdaptiveDpr pixelated />
-      </Canvas>
+      {started && (
+        <Canvas
+          dpr={[1, 1.75]}
+          camera={{ position: [0, 0.95, 13], fov: 40, near: 0.1, far: 80 }}
+          gl={{ antialias: true, alpha: false, powerPreference: 'high-performance' }}
+        >
+          <fog attach="fog" args={['#160f14', 15, 34]} />
+          <Suspense fallback={null}>
+            <CodedChristmasScene wishId={wishId} />
+            <EffectComposer multisampling={0}>
+              <Bloom intensity={0.75} luminanceThreshold={0.68} mipmapBlur />
+              <Vignette eskil={false} offset={0.18} darkness={0.62} />
+            </EffectComposer>
+            <Preload all />
+          </Suspense>
+          <AdaptiveDpr pixelated />
+        </Canvas>
+      )}
 
-      <p className="christmas-message" aria-label="Merry Christmas">
-        Merry Christmas
-      </p>
+      {!started && (
+        <button className="start-experience" type="button" onClick={startExperience}>
+          <span>Click anywhere to begin</span>
+        </button>
+      )}
 
-      <nav className="experience-controls" aria-label="Experience controls">
+      {started && (
+        <p className="christmas-message" aria-label="Merry Christmas">
+          Merry Christmas
+        </p>
+      )}
+
+      {started && <nav className="experience-controls" aria-label="Experience controls">
         <button className="wish-button" type="button" onClick={() => setWishId((id) => id + 1)}>
           <span aria-hidden="true">✦</span>
           Make a Wish
@@ -79,7 +105,7 @@ function App() {
         >
           <span aria-hidden="true">{audioUnavailable ? '♩' : muted ? '♪' : '♫'}</span>
         </button>
-      </nav>
+      </nav>}
 
       <div className="corner-flourish corner-flourish--left" aria-hidden="true" />
       <div className="corner-flourish corner-flourish--right" aria-hidden="true" />
