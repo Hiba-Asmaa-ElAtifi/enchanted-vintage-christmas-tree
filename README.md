@@ -4,7 +4,7 @@ A small creative-coding project that reimagines a traditional Christmas tree as 
 
 The scene gradually comes to life with deep-green branches, vintage ornaments, golden garlands, warm lights, falling snow, colourful presents, and a handwritten Christmas message. The result is intentionally stylised and digital, combining the nostalgic atmosphere of an old-fashioned Christmas with a generative WebGL aesthetic.
 
-<img width="622" height="847" alt="The Enchanted Vintage Christmas Tree" src="https://github.com/user-attachments/assets/ca691bfb-fbcb-4b85-bfed-fce6765e1a7b" />
+<img width="1104" height="953" alt="image" src="https://github.com/user-attachments/assets/95eabc41-3d82-429c-b76c-e3dac08a240c" />
 
 ## The experience
 
